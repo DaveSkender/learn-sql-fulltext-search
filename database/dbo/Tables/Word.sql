@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Word] (
     [ID]   INT           IDENTITY (1, 1) NOT NULL,
-    [Word] VARCHAR (100) NOT NULL,
+    [Word] VARCHAR (30) NOT NULL,
     CONSTRAINT [PK_Word] PRIMARY KEY NONCLUSTERED ([ID] ASC)
 );
 GO

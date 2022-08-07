@@ -71,7 +71,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="scripts\Script.PostDeployment.sql" />
+    <PostDeploy Include="scripts\_Script.PostDeployment.sql" />
+    <None Include="scripts\dictionary.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Word.sql" />
