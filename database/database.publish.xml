@@ -2,12 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>database</TargetDatabaseName>
-    <DeployScriptFileName>database.sql</DeployScriptFileName>
     <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
-    <DatabaseEdition>Basic</DatabaseEdition>
-    <DatabaseServiceObjective>Basic</DatabaseServiceObjective>
-    <DatabaseMaximumSize>2</DatabaseMaximumSize>
-    <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>
