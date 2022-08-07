@@ -1,0 +1,73 @@
+trigger:
+  - master
+
+pr:
+  - master
+
+name: $(BuildID)-$(SourceBranchName)
+
+jobs:
+
+- job: Phase_1
+  displayName: Backend
+  cancelTimeoutInMinutes: "1"
+
+  pool:
+    vmImage: windows-2019
+
+  steps:
+  - checkout: self
+    clean: "true"
+
+  - task: NuGetToolInstaller@1
+    displayName: use NuGet 5.8.x
+    inputs:
+      versionSpec: 5.8.x
+
+  - task: NuGetCommand@2
+    name: ''
+    displayName: restore NuGet packages
+    inputs:
+      command: 'restore'
+      restoreSolution: 'server/**/*.sln'
+
+  - task: UseDotNet@2
+    displayName: use .NET Core 6.x
+    inputs:
+      version: 6.x
+
+  - task: DotNetCoreCLI@2
+    name: ''
+    displayName: dotnet restore
+    inputs:
+      command: restore
+      projects: database/**/*.csproj
+
+  - task: VSBuild@1
+    name: ''
+    displayName: build Visual Studio solution
+    inputs:
+      solution: server\**\*.sln
+      vsVersion: "16.0"
+      platform: Any CPU
+      configuration: Release
+      clean: true
+
+  - task: CopyFiles@2
+    name: ''
+    displayName: stage database artifacts
+    inputs:
+      Contents: >-
+        **/*.dacpac
+
+        **/*.publish.xml
+      TargetFolder: $(build.ArtifactStagingDirectory)
+      OverWrite: true
+      flattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    name: ''
+    displayName: publish artifacts
+    inputs:
+      PathtoPublish: $(build.ArtifactStagingDirectory)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
