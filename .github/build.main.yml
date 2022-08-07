@@ -1,0 +1,61 @@
+trigger:
+  - master
+
+pr:
+  - master
+
+name: $(BuildID)-$(SourceBranchName)
+
+jobs:
+
+- job: Phase_1
+  displayName: Backend
+  cancelTimeoutInMinutes: "1"
+
+  pool:
+    vmImage: windows-2019
+
+  steps:
+  - checkout: self
+    clean: "true"
+
+  - task: NuGetToolInstaller@1
+    displayName: use NuGet 6.x
+    inputs:
+      versionSpec: 6.x
+
+  - task: NuGetCommand@2
+    name: ''
+    displayName: restore NuGet packages
+    inputs:
+      command: 'restore'
+      restoreSolution: 'server/**/*.sln'
+
+  - task: VSBuild@1
+    name: ''
+    displayName: build Visual Studio solution
+    inputs:
+      solution: learnDB.sln
+      vsVersion: "17.0"
+      platform: Any CPU
+      configuration: Release
+      clean: true
+
+  - task: CopyFiles@2
+    name: ''
+    displayName: stage database artifacts
+    inputs:
+      Contents: >-
+        **/*.dacpac
+
+        **/*.publish.xml
+      TargetFolder: $(build.ArtifactStagingDirectory)
+      OverWrite: true
+      flattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    name: ''
+    displayName: publish artifacts
+    inputs:
+      PathtoPublish: $(build.ArtifactStagingDirectory)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
