@@ -35,7 +35,7 @@ jobs:
     name: ''
     displayName: build Visual Studio solution
     inputs:
-      solution: server\**\*.sln
+      solution: learnDB.sln
       vsVersion: "17.0"
       platform: Any CPU
       configuration: Release
