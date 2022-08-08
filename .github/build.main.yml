@@ -38,20 +38,20 @@ jobs:
     name: ''
     displayName: build Visual Studio solution
     inputs:
-      solution: learnDB.sln
-      vsVersion: "latest"
-      platform: Any CPU
-      configuration: Release
+      solution: 'learnDB.sln'
+      vsVersion: '17.0'
+      platform: 'Any CPU'
+      configuration: 'Release'
       clean: true
 
   - task: CopyFiles@2
     name: ''
     displayName: stage database artifacts
     inputs:
-      Contents: >-
+      Contents: |
         **/*.dacpac
         **/*.publish.xml
-      TargetFolder: $(build.ArtifactStagingDirectory)
+      TargetFolder: '$(build.ArtifactStagingDirectory)'
       OverWrite: true
       flattenFolders: true
 
