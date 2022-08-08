@@ -39,7 +39,7 @@ jobs:
     displayName: build Visual Studio solution
     inputs:
       solution: learnDB.sln
-      vsVersion: "17.0"
+      vsVersion: "latest"
       platform: Any CPU
       configuration: Release
       clean: true
@@ -50,7 +50,6 @@ jobs:
     inputs:
       Contents: >-
         **/*.dacpac
-
         **/*.publish.xml
       TargetFolder: $(build.ArtifactStagingDirectory)
       OverWrite: true
