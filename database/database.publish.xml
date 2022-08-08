@@ -3,5 +3,22 @@
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <BackupDatabaseBeforeChanges>False</BackupDatabaseBeforeChanges>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <DoNotDropUsers>True</DoNotDropUsers>
+    <DoNotDropServerRoleMembership>True</DoNotDropServerRoleMembership>
+    <DoNotDropServerRoles>True</DoNotDropServerRoles>
+    <DoNotDropSecurityPolicies>True</DoNotDropSecurityPolicies>
+    <DoNotDropPermissions>True</DoNotDropPermissions>
+    <DoNotDropLogins>True</DoNotDropLogins>
+    <DoNotDropLinkedServers>True</DoNotDropLinkedServers>
+    <DoNotDropLinkedServerLogins>True</DoNotDropLinkedServerLogins>
+    <DoNotDropFilegroups>True</DoNotDropFilegroups>
+    <DoNotDropDatabaseRoles>True</DoNotDropDatabaseRoles>
+    <DoNotDropDatabaseScopedCredentials>True</DoNotDropDatabaseScopedCredentials>
+    <DoNotDropCredentials>True</DoNotDropCredentials>
+    <DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+    <DoNotDropFiles>True</DoNotDropFiles>
   </PropertyGroup>
 </Project>
