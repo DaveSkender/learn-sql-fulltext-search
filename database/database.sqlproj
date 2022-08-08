@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{b280c5ee-38ec-42e3-8358-a63b275e9af4}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <DSP>SqlAzure</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -58,30 +58,28 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Storage\" />
     <Folder Include="compare" />
     <Folder Include="scripts" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
-    <Folder Include="Storage\" />
     <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compare\local.scmp" />
     <None Include="database.publish.xml" />
-    <None Include="scripts\dictionary.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="scripts\dictionary.csv" />
+    <None Include="scripts\example - fulltext query.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="scripts\_Script.PostDeployment.sql" />
     <None Include="scripts\dictionary.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="FullTextIndexes.sql" />
+    <Build Include="Storage\FulltextCatalog.sql" />
     <Build Include="dbo\Tables\Word.sql" />
     <Build Include="dbo\Tables\Definition.sql" />
-    <Build Include="Storage\FulltextCatalog.sql" />
-    <Build Include="FullTextIndexes.sql" />
-    <None Include="scripts\example - fulltext query.sql" />
     <Build Include="dbo\Stored Procedures\usp_DictionarySearch.sql" />
   </ItemGroup>
 </Project>
