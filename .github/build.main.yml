@@ -13,7 +13,10 @@ jobs:
   cancelTimeoutInMinutes: "1"
 
   pool:
-    vmImage: windows-2019
+    vmImage: windows-latest
+    demands:
+    - msbuild
+    - visualstudio
 
   steps:
   - checkout: self
