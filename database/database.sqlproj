@@ -75,11 +75,11 @@
     <None Include="scripts\dictionary.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="FullTextIndexes.sql" />
     <Build Include="Storage\FulltextCatalog.sql" />
     <Build Include="dbo\Tables\Word.sql" />
     <Build Include="dbo\Tables\Definition.sql" />
     <Build Include="dbo\Stored Procedures\usp_DictionarySearch.sql" />
+    <Build Include="Storage\FullTextIndexes.sql" />
   </ItemGroup>
   <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
