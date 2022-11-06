@@ -21,7 +21,7 @@ This full-text search demonstration shows you how to:
 3. create a full-text catalog and index on an indexed view
 4. fuzzy search the catalog to return matching records with relevance ranking
 5. setup and use SQL deployment configuration settings
-6. build and deploy a database using [DACPAC](https://docs.microsoft.com/en-us/sql/relational-databases/data-tier-applications/data-tier-applications)-based publishing (see [build and release pipelines](https://dev.azure.com/skender/Community/) on Azure DevOps)
+6. build and deploy a database using [DACPAC](https://docs.microsoft.com/en-us/sql/relational-databases/data-tier-applications/data-tier-applications)-based publishing (see [build and release pipelines](https://dev.azure.com/skender/Community/_release?definitionId=3) on Azure DevOps)
 
 ## developer getting started
 
